@@ -1,0 +1,229 @@
+﻿@model List<st10161149_prog7311_part2.Models.Product>
+@{
+    ViewBag.Title = "Farmer's Products";
+}
+<script>
+    function applyFilters() {
+        const categoryFilter = document.getElementById('categoryFilter').value.toLowerCase();
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+
+        const rows = document.querySelectorAll("tbody tr");
+
+        rows.forEach(row => {
+            const category = row.children[1].textContent.toLowerCase();
+            const date = new Date(row.children[3].textContent);
+            const showByCategory = !categoryFilter || category.includes(categoryFilter);
+
+            let showByDate = true;
+            if (startDate) {
+                showByDate = date >= new Date(startDate);
+            }
+            if (endDate) {
+                showByDate = showByDate && date <= new Date(endDate);
+            }
+
+            row.style.display = (showByCategory && showByDate) ? '' : 'none';
+        });
+    }
+
+    function resetFilters() {
+        document.getElementById('categoryFilter').value = '';
+        document.getElementById('startDate').value = '';
+        document.getElementById('endDate').value = '';
+        applyFilters();
+    }
+</script>
+
+<style>
+    :root {
+        --primary-color: #2E7D32;
+        --secondary-color: #388E3C;
+        --text-dark: #5D4037;
+        --text-medium: #757575;
+        --background-light: #F5F5F6;
+        --border-color: #BDBDBD;
+        --button-hover: #0288D1;
+        --button-active: #388E3C;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: var(--background-light);
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        padding: 2rem;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        max-width: 1000px;
+        margin: 2rem auto;
+    }
+
+    h2 {
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 2rem;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+        background-color: var(--primary-color);
+        color: white;
+        font-weight: 600;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+        transform: scale(1.01);
+        transition: all 0.3s ease;
+    }
+
+    .filter-container {
+        background-color: var(--background-light);
+        padding: 1.5rem;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .filter-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        align-items: flex-end;
+    }
+
+    .filter-item {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-width: 180px;
+    }
+
+        .filter-item label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-medium);
+        }
+
+        .filter-item input {
+            padding: 0.6rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+    .filter-actions {
+        display: flex;
+        gap: 0.8rem;
+    }
+
+        .filter-actions button {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            color: white;
+            font-size: 1rem;
+        }
+
+            .filter-actions button:first-child {
+                background-color: var(--primary-color);
+            }
+
+                .filter-actions button:first-child:hover {
+                    background-color: var(--button-hover);
+                }
+
+            .filter-actions button:last-child {
+                background-color: gray;
+            }
+
+                .filter-actions button:last-child:hover {
+                    background-color: #555;
+                }
+
+</style>
+
+<h2>Products by @ViewBag.FarmerName</h2>
+
+@if (!Model.Any())
+{
+    <p>No products found for this farmer.</p>
+}
+else
+{
+
+    <div class="filter-container">
+        <h3 style="color: var(--text-dark); margin-bottom: 1rem;">Filter Products</h3>
+
+        <div class="filter-group">
+            <div class="filter-item">
+                <label for="categoryFilter">Product Category:</label>
+                <input type="text" id="categoryFilter" placeholder="e.g., Vegetables" />
+            </div>
+
+            <div class="filter-item">
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" />
+            </div>
+
+            <div class="filter-item">
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" />
+            </div>
+
+            <div class="filter-actions">
+                <button onclick="applyFilters()">Apply Filter</button>
+                <button onclick="resetFilters()">Reset</button>
+            </div>
+        </div>
+        <hr>
+       
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Date Added</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.ProductName</td>
+                        <td>@product.Category</td>
+                        <td>@product.Price</td>
+                        <td>@product.DateAdded.ToShortDateString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+

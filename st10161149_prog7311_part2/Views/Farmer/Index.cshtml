@@ -1,0 +1,146 @@
+﻿@model IEnumerable<st10161149_prog7311_part2.Models.Farmer>
+
+@{
+    ViewData["Title"] = "Farmers Network";
+}
+
+<style>
+    :root {
+        --primary-color: #2E7D32;
+        --secondary-color: #388E3C;
+        --text-dark: #5D4037;
+        --text-medium: #757575;
+        --background-light: #F5F5F6;
+        --border-color: #BDBDBD;
+        --button-hover: #0288D1;
+        --button-active: #388E3C;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-light);
+    }
+
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding: 0 2rem;
+    }
+
+        .page-header h2 {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .btn-primary {
+        background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        color: white;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+    .btn-secondary {
+        background: var(--text-dark);
+        color: white;
+        border: none;
+    }
+
+        .btn-secondary:hover {
+            background: var(--button-active);
+        }
+
+    .card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+        padding: 0 1rem;
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .data-table th, .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .data-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .data-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+    .icon-plus, .icon-location {
+        margin-right: 8px;
+    }
+
+    /* Responsive Design */
+</style>
+
+<div class="page-header">
+    <h2>Farmers Network</h2>
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="icon-plus"></i> Add New Farmer
+    </a>
+</div>
+
+<div class="card">
+    <div class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var farmer in Model)
+                {
+                    <tr>
+                        <td>@farmer.FullName</td>
+                        <td>
+                            <i class="icon-location"></i> @farmer.Location
+                        </td>
+                        <td>
+                            <a asp-controller="Product" asp-action="FarmerProducts" asp-route-farmerId="@farmer.FarmerId"
+                               class="btn btn-sm btn-secondary">
+                                View Products
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

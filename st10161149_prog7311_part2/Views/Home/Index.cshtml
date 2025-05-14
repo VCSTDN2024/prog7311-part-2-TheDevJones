@@ -1,0 +1,170 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<style>
+    :root {
+        --primary-color: #2E7D32;
+        --secondary-color: #388E3C;
+        --text-dark: #5D4037;
+        --text-medium: #757575;
+        --background-light: #F5F5F6;
+        --border-color: #BDBDBD;
+        --button-hover: #0288D1;
+        --button-active: #388E3C;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-light);
+    }
+
+    .container {
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 250px;
+        background-color: var(--primary-color);
+        padding: 2rem;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 0.3s;
+    }
+
+        .sidebar h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+            .sidebar a:hover {
+                background-color: var(--secondary-color);
+                transform: translateX(10px);
+            }
+
+    /* Main content */
+    .main-content {
+        flex: 1;
+        padding: 2rem;
+        overflow-y: auto;
+    }
+
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+        .page-header h2 {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+    .welcome-message {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        color: var(--text-dark);
+        font-weight: 600;
+    }
+
+    /* Dashboard Cards */
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .card {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card .card-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .card .card-description {
+            color: var(--text-medium);
+            margin-top: 1rem;
+        }
+
+    /* Button Styles */
+    .btn {
+        padding: 0.75rem;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .btn-primary {
+        background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        color: white;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+</style>
+
+<div class="container">
+    <!-- Sidebar -->
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h2>Welcome to Agri-Energy Connect</h2>
+            <a asp-action="Create" class="btn btn-primary">
+                <i class="icon-plus"></i> Add New Farmer
+            </a>
+        </div>
+
+        <div class="welcome-message">
+            <p>You are logged in!</p>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <h3 class="card-title">Farmers</h3>
+                <p class="card-description">View and manage your farmers network.</p>
+                <a href="#" class="btn btn-primary">View Farmers</a>
+            </div>
+            <div class="card">
+                <h3 class="card-title">Products</h3>
+                <p class="card-description">Explore and manage the products available for farmers.</p>
+                <a href="#" class="btn btn-primary">View Products</a>
+            </div>
+        </div>
+    </div>
+</div>

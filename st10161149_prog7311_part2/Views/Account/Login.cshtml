@@ -1,0 +1,151 @@
+﻿@page
+@model st10161149_prog7311_part2.Pages.Account.LoginModel
+@{
+}
+<style>
+    .login-container {
+        background: linear-gradient(135deg, #F5F5F6 0%, #E0E0E0 100%);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: 5% auto;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .login-container::before,
+        .login-container::after {
+            content: "";
+            position: absolute;
+            background: #2E7D32;
+        }
+
+        .login-container::before {
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            border-radius: 0 0 0 100px;
+        }
+
+        .login-container::after {
+            bottom: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background: #5D4037;
+            opacity: 0.1;
+            border-radius: 0 100px 0 0;
+        }
+
+        .login-container .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+            .login-container .header h1 {
+                color: #2E7D32;
+                font-weight: 700;
+                font-size: 2rem;
+            }
+
+            .login-container .header p {
+                color: #5D4037;
+                font-size: 1rem;
+            }
+
+        .login-container form {
+            position: relative;
+            z-index: 2;
+        }
+
+            .login-container form .input-group {
+                margin-bottom: 1.5rem;
+            }
+
+                .login-container form .input-group label {
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    color: #5D4037;
+                    font-weight: 500;
+                }
+
+                .login-container form .input-group input {
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 1px solid #BDBDBD;
+                    border-radius: 8px;
+                    background-color: rgba(255, 255, 255, 0.8);
+                    transition: all 0.3s;
+                }
+
+                    .login-container form .input-group input:focus {
+                        border-color: #0288D1;
+                        box-shadow: 0 0 0 2px rgba(2, 136, 209, 0.2);
+                    }
+
+                    .login-container form .input-group input:blur {
+                        border-color: #BDBDBD;
+                        box-shadow: none;
+                    }
+
+            .login-container form button {
+                width: 100%;
+                padding: 0.75rem;
+                background: linear-gradient(90deg, #2E7D32 0%, #388E3C 100%);
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+                .login-container form button:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+                }
+
+                .login-container form button:mouseout {
+                    transform: none;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }
+
+        .login-container .footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #757575;
+            font-size: 0.9rem;
+        }
+
+            .login-container .footer a {
+                color: #0288D1;
+                text-decoration: none;
+                font-weight: 500;
+            }
+</style>
+
+<div class="login-container">
+    <div class="header">
+        <h1>Agri-Energy Connect</h1>
+        <p>The future of farming connections</p>
+    </div>
+
+    <form asp-action="Login" method="post">
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username">
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <button type="submit">Login</button>
+    </form>
+
+    <div class="footer">
+        <p>New to Agri-Energy? <a href="#">Register here</a></p>
+    </div>
+</div>

@@ -1,0 +1,208 @@
+﻿/* styles.css - Modern Agri-Energy Connect Theme */
+
+:root {
+    --primary-green: #2E7D32;
+    --dark-green: #1B5E20;
+    --light-green: #81C784;
+    --earth-brown: #5D4037;
+    --light-brown: #8D6E63;
+    --accent-blue: #0288D1;
+    --light-gray: #F5F5F6;
+    --medium-gray: #E0E0E0;
+    --dark-gray: #757575;
+    --text-dark: #212121;
+    --text-light: #FFFFFF;
+    --shadow-sm: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-md: 0 10px 30px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+    background-color: purple;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Login Container */
+.login-container {
+    background: linear-gradient(135deg, var(--light-gray) 0%, var(--medium-gray) 100%);
+    border-radius: 15px;
+    box-shadow: var(--shadow-md);
+    max-width: 500px;
+    margin: 5% auto;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+    .login-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        background: var(--primary-green);
+        border-radius: 0 0 0 100px;
+    }
+
+    .login-container::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 150px;
+        height: 150px;
+        background: var(--earth-brown);
+        opacity: 0.1;
+        border-radius: 0 100px 0 0;
+    }
+
+/* Header Styles */
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+    .login-header h1 {
+        color: var(--primary-green);
+        font-weight: 700;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .login-header p {
+        color: var(--earth-brown);
+        font-size: 1rem;
+    }
+
+/* Form Elements */
+.login-form {
+    position: relative;
+    z-index: 2;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--earth-brown);
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #BDBDBD;
+    border-radius: 8px;
+    background-color: rgba(255,255,255,0.8);
+    transition: var(--transition);
+    font-size: 1rem;
+}
+
+    .form-input:focus {
+        outline: none;
+        border-color: var(--accent-blue);
+        box-shadow: 0 0 0 2px rgba(2,136,209,0.2);
+    }
+
+/* Button Styles */
+.btn {
+    width: 100%;
+    padding: 0.75rem;
+    color: var(--text-light);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--primary-green) 0%, var(--dark-green) 100%);
+}
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+    }
+
+/* Footer Links */
+.login-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--dark-gray);
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
+}
+
+    .login-footer a {
+        color: var(--accent-blue);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+    }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .login-container {
+        margin: 10% auto;
+        width: 90%;
+    }
+
+    .login-header h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Card Styles (for other pages) */
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Table Styles (for Farmers Network page) */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+    .data-table th {
+        background: var(--primary-green);
+        color: white;
+        padding: 1rem;
+        text-align: left;
+    }
+
+    .data-table td {
+        padding: 1rem;
+        border-bottom: 1px solid var(--medium-gray);
+    }
+
+    .data-table tr:hover {
+        background-color: rgba(129, 199, 132, 0.1);
+    }

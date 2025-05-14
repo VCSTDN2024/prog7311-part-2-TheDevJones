@@ -1,0 +1,198 @@
+﻿@model List<st10161149_prog7311_part2.Models.Product>
+
+<style>
+    :root {
+        --primary-color: #2E7D32;
+        --secondary-color: #388E3C;
+        --text-dark: #5D4037;
+        --text-medium: #757575;
+        --background-light: #F5F5F6;
+        --border-color: #BDBDBD;
+        --button-hover: #0288D1;
+        --button-active: #388E3C;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: var(--background-light);
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        padding: 2rem;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        max-width: 1000px;
+        margin: 2rem auto;
+    }
+
+    h2 {
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 2rem;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+        background-color: var(--primary-color);
+        color: white;
+        font-weight: 600;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+        transform: scale(1.01);
+        transition: all 0.3s ease;
+    }
+
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding: 0 2rem;
+    }
+
+        .page-header h2 {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .btn-primary {
+        background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        color: white;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+</style>
+
+
+<div class="page-header">
+    <h2>Farmers Network</h2>
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="icon-plus"></i> Add Product
+    </a>
+</div>
+
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Production Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.ProductName</td>
+                    <td>@product.Category</td>
+                    <td>@product.Price</td>
+                    <td>@product.DateAdded</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    :root {
+        --primary-color: #2E7D32;
+        --secondary-color: #388E3C;
+        --text-dark: #5D4037;
+        --text-medium: #757575;
+        --background-light: #F5F5F6;
+        --border-color: #BDBDBD;
+        --button-hover: #0288D1;
+        --button-active: #388E3C;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: var(--background-light);
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        padding: 2rem;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        max-width: 1000px;
+        margin: 2rem auto;
+    }
+
+    h2 {
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 2rem;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+        background-color: var(--primary-color);
+        color: white;
+        font-weight: 600;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+        transform: scale(1.01);
+        transition: all 0.3s ease;
+    }
+</style>
